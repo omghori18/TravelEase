@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+    <title>FAQ-travelease</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdfdfd;
+        }
+
+        header div {
+            background-color:#084d74;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #f3f3f3;
+            margin: 0;
+            padding: 10px 0;
+        }
+
+        header a {
+            text-decoration: none;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ffffff;
+            margin: 20px 0;
+        }
+
+        #faq-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background-color: #e1eef5;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background-color: hsl(199, 80%, 88%);
+        }
+
+        .faq-answer {
+            padding: 0 15px;
+            background-color: #f9f9f9;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 15px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            font-size: 1.1em;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 9998;
+        }
+
+        .tip-popup {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #fff3cd;
+            color: #5c3700;
+            border: 2px solid #ffeeba;
+            padding: 20px 25px;
+            width: 420px;
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            z-index: 9999;
+            font-size: 1em;
+            text-align: left;
+            font-family: "Segoe UI", sans-serif;
+        }
+        footer {
+      background-color: #084d74;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+    </style>
+
+</head>
+
+<body style="background-color: #fbfbfb;">
+    <header>
+        <div>
+            <a href="./h.html" style="text-decoration: none;">
+                <h1>TravelEase</h1>
+            </a>
+        </div>
+        <hr>
+    </header>
+
+    <div id="overlay" class="overlay"></div>
+
+    <div id="faqWelcome" class="tip-popup">
+        ✈️ <strong>Welcome to TravelEase FAQ!</strong><br>
+        Here you'll find answers to all your booking, payment, and trip-related queries. Safe travels!
+        <span id="closeFaqPopup" style="margin-left: 15px; font-weight: bold; cursor: pointer;">&times;</span>
+    </div>
+
+
+
+    <main>
+        <h2 style="text-align: center;">Frequently Asked Questions</h2>
+
+        <div id="faq-container">
+            <div class="faq-item">
+                <h3 class="faq-question">1. How do I book a trip?</h3>
+                <p class="faq-answer">You can go to the home page, select a destination, and click "Book Trip" to start
+                    booking.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">2. What payment methods are accepted?</h3>
+                <p class="faq-answer">We accept debit cards, credit cards, UPI, and net banking.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">3. Can I cancel my booking?</h3>
+                <p class="faq-answer">Yes, you can cancel your trip from your account. Cancellation charges may apply.
+                </p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">4. How will I get my ticket?</h3>
+                <p class="faq-answer">After booking, your ticket and trip details will be sent to your email.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3 class="faq-question">5. Is travel insurance included?</h3>
+                <p class="faq-answer">Travel insurance is optional. You can add it during booking.</p>
+            </div>
+        </div>
+        <hr>
+    </main>
+
+    <footer>
+        <p>copyright TravelEase all rights reserved
+        <p>
+    </footer>
+
+    <script>
+        window.onload = function () {
+            const tip = document.getElementById("hydrationTip");
+            const closeTip = document.getElementById("closeTip");
+
+            tip.style.display = "block";
+
+            closeTip.onclick = function () {
+                tip.style.display = "none";
+            };
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

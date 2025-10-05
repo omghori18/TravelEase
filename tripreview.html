@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <title>Trip Review</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: rgb(227, 242, 248);
+      margin: 0; 
+    }
+
+    header {
+      background-color: #033554; 
+      padding: 10px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      color: rgb(181, 250, 249);
+    }
+
+    main {
+      max-width: 700px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px lightgray;
+    }
+
+    h2 {
+      text-align: center;
+      color: #033554;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="./h.html" style="text-decoration: none;">
+      <h1>TravelEase</h1>
+    </a>
+  </header>
+
+  <main>
+    <h2>Recent Reviews</h2>
+    <div id="reviewList"></div>
+  </main>
+
+  <script>
+    const reviewList = document.getElementById("reviewList");
+
+    function displayReviews(reviews) {
+      reviewList.innerHTML = "";
+      reviews.forEach((r) => {
+        reviewList.innerHTML += `
+          <div style="margin-bottom: 20px;">
+            <p><strong>${r.name}</strong> – “${r.review}”</p>
+            <hr>
+          </div>
+        `;
+      });
+    }
+
+    async function loadReviews() {
+      try {
+        const res = await fetch("reviews.json");
+        const data = await res.json();
+        if (data.reviews) {
+          displayReviews(data.reviews);
+        }
+      } catch (error) {
+        console.error("Error loading reviews.json", error);
+      }
+    }
+
+    loadReviews();
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up - TravelEase</title>
+  <link rel="stylesheet" href="hcss.css">
+</head>
+<body style="font-family: Arial;">
+<header>
+  <a href="./h.html" style="text-decoration: none;">
+    <h1>TravelEase</h1>
+  </a>
+</header>
+
+<main>
+  <div style="text-align: center; max-width: 300px; margin: 40px auto; padding: 40px; background-color: rgb(221, 243, 251); border-radius: 10px;">
+    <h2 style="color: rgb(3, 47, 86);">Sign Up</h2>
+    <form id="signupForm" action="register.php" method="POST" onsubmit="return validateCaptcha()">
+      <input name="fullname" style="width: 200px; height: 30px; margin: 5px;" type="text" placeholder="Full Name" required><br>
+      <input name="mobile" style="width: 200px; height: 30px; margin: 5px;" type="text" placeholder="Mobile No" required
+      pattern="[0-9]{10}" title="Phone no must contain 10 digits"><br>
+      <input name="email" style="width: 200px; height: 30px; margin: 5px;" type="email" placeholder="Email" required><br>
+      <input name="password" type="password" id="Password" placeholder="Password" required
+             pattern="^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9]).{8,}$"
+             title="Password must contain at least one digit, one uppercase letter, one lowercase letter, one special character, and be at least 8 characters long."
+             style="width: 200px; height: 30px; margin: 5px;"><br>
+      <input type="password" id="ConfirmPassword" placeholder="Confirm Password" required
+             style="width: 200px; height: 30px; margin: 5px;"
+             oninput="this.setCustomValidity(this.value !== document.getElementById('Password').value ? 'Passwords do not match' : '')"><br>
+
+      <!-- Custom Captcha -->
+      <div style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+        <canvas id="captchaCanvas" width="120" height="40" style="border:1px solid #ccc;border-radius:5px;"></canvas>
+        <button type="button" onclick="generateCaptcha()">refresh</button>
+      </div>
+      <input type="text" id="captchaInput" name="captchaInput" placeholder="Enter captcha" required style="width: 200px; height: 30px; margin: 5px;">
+      <input type="hidden" name="captcha_hidden" id="captchaHidden">
+
+      <button type="submit" style="margin-top:10px;">Submit</button>
+    </form>
+  </div>
+</main>
+
+<footer style="text-align: center; margin-top: 100px;">
+  <p>2025 TravelEase all rights reserved</p>
+</footer>
+
+<script>
+let captchaCode = "";
+
+// Generate random captcha
+function generateCaptcha() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
+  captchaCode = "";
+  for (let i = 0; i < 6; i++) {
+    captchaCode += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+
+  const canvas = document.getElementById("captchaCanvas");
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.font = "22px Arial";
+  ctx.fillStyle = "#043d57";
+  ctx.fillText(captchaCode, 10, 25);
+
+  document.getElementById("captchaHidden").value = captchaCode;
+}
+
+// Validate captcha before form submit
+function validateCaptcha() {
+  const userCaptcha = document.getElementById("captchaInput").value.trim();
+  const original = document.getElementById("captchaHidden").value.trim();
+
+  if (userCaptcha !== original) {
+    alert("❌ Invalid Captcha! Please try again.");
+    generateCaptcha();
+    document.getElementById("captchaInput").value = "";
+    return false;
+  }
+  return true;
+}
+
+// Initialize captcha on page load
+window.onload = generateCaptcha;
+</script>
+
+</body>
+</html>

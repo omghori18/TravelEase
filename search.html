@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="hcss.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: rgba(4, 58, 96, 0.935);
+      padding: 10px 20px;
+    }
+
+    header h1 {
+      color: rgba(177, 235, 247, 0.85);
+      margin: 0;
+    }
+
+    main {
+      text-align: center;
+      padding: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    input[type="submit"] {
+      background-color: #a7d3f5;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 700px;
+      margin: 40px auto;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      background: rgb(234, 245, 250);
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      padding: 10px;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .slide h3 {
+      margin: 10px 0 5px;
+      color: #333;
+    }
+
+    .slide p {
+      margin: 0;
+      color: #666;
+    }
+
+    .dot-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active {
+      background-color: #717171;
+    }
+    footer {
+      background-color: #084d74;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="./h.html" style="text-decoration: none;">
+      <h1>TravelEase</h1>
+    </a>
+  </header>
+
+  <main>
+    <label><strong>Search Destination:</strong></label><br><br>
+    <input type="text" placeholder="Enter city like London, Paris, Dubai"><br><br>
+    <input type="submit" value="Search">
+    <h2 style="color: #083664;">Popular Destinations</h2>
+
+    <div class="slideshow-container">
+      <div class="slide">
+        <img src="https://thumbs.dreamstime.com/b/thun-lake-switzerland-swiss-village-resort-near-interlaken-55650785.jpg" alt="Switzerland">
+        <h3>Switzerland</h3>
+        <p>Explore snowy mountains and scenic beauty.</p>
+      </div>
+      <div class="slide">
+        <img src="https://media.istockphoto.com/id/653953140/photo/hindu-temple-in-bali.jpg?s=612x612&w=0&k=20&c=ysj3S2kV1ZgCr4QZWDzjvHRowCI3-cR1xQNnqE8-BS4=" alt="Bali">
+        <h3>Bali</h3>
+        <p>Relax on tropical beaches and visit temples.</p>
+      </div>
+      <div class="slide">
+        <img src="https://media.istockphoto.com/id/1454217037/photo/statue-of-liberty-and-new-york-city-skyline-with-manhattan-financial-district-world-trade.jpg?s=612x612&w=0&k=20&c=6V54_qVlDfo59GLEdY2W8DOjLbbHTJ9y4AnJ58a3cis=" alt="New York">
+        <h3>New York</h3>
+        <p>Discover the city that never sleeps.</p>
+      </div>
+      <div class="slide">
+        <img src="https://babylontours.com/wp-content/uploads/2016/09/london-441853_960_720.jpg" alt="London">
+        <h3>London</h3>
+        <p>Visit royal landmarks and historic streets.</p>
+      </div>
+      <div class="slide">
+        <img src="https://images.squarespace-cdn.com/content/v1/5c7976ec11f78465c3ab8a2d/56e70f17-bb3c-4fc4-af1d-f52d3715a209/Dubai__L9A0193__September+26%2C+2023-HDR.jpg" alt="Dubai">
+        <h3>Dubai</h3>
+        <p>Experience modern luxury and desert adventures.</p>
+      </div>
+      <div class="slide">
+        <img src="paris.jpg" alt="Paris">
+        <h3>Paris</h3>
+        <p>Fall in love with art, fashion, and the Eiffel Tower.</p>
+      </div>
+    </div>
+
+    <div class="dot-container">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </main>
+
+  <script>
+    let slideIndex = 0
+    const slides = document.getElementsByClassName("slide")
+    const dots = document.getElementsByClassName("dot")
+
+    function showSlides() {
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"
+      }
+      slideIndex++
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove("active")
+      }
+      slides[slideIndex - 1].style.display = "block"
+      dots[slideIndex - 1].classList.add("active")
+      setTimeout(showSlides, 3000)
+    }
+
+    showSlides()
+  </script>
+</body>
+<footer>
+  2025 TravelEase – All rights reserved
+</footer>
+</html>

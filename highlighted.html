@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravelEase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      background-size: cover;
+    }
+
+    header {
+      background-color:#084d74;
+      padding: 10px 0;
+      width: 100%;
+      
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #a4f3f4;
+    }
+
+    main {
+      margin-top: 90px;
+      flex: 1; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .book {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: nowrap;
+      max-width: 1000px;
+      padding: 20px;
+      padding-bottom: 80px;
+    }
+
+    .book1, .book2, .book3 {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 30px;
+      width: 400px;
+      text-align: center;
+    }
+
+    .book img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    button {
+      background-color: #033554;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #06527d;
+    }
+
+    footer {
+      background-color: #084d74;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="./h.html" style="text-decoration: none;">
+      <h1>TravelEase</h1>
+    </a>
+  </header>
+
+  <main>
+    <div class="book">
+      <div class="book1">
+        <h2>London</h2>
+        <img src="LONDON.webp" alt="London Image">
+        <p>Visit the historic Tower Bridge and explore the charm of London.</p>
+        <a href="./book1.html">
+          <button>Book Trip</button>
+        </a>
+      </div>
+
+      <div class="book2">
+        <h2>Dubai</h2>
+        <img src="dubai.jpg" alt="Dubai Image">
+        <p>Experience luxury and adventure at the Burj Khalifa in Dubai.</p>
+        <a href="./book2.html">
+          <button>Book Trip</button>
+        </a>
+      </div>
+
+      <div class="book3">
+        <h2>Paris</h2>
+        <img src="paris.jpg" alt="Paris Image">
+        <p>Fall in love with the Eiffel Tower and the beauty of Paris.</p>
+        <a href="./book3.html">
+          <button>Book Trip</button>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>2025 TravelEase — All Rights Reserved</p>
+  </footer>
+</body>
+</html>

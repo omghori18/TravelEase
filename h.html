@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TravelEase - Book Smart, Travel Easy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+ 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header h1 {
+      color: #f4efa4;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 15px;
+      background-color: #05314e; 
+    }
+
+    .nav-left a,
+    .nav-right a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px; 
+      display: inline-block;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 5px;
+     
+    }
+
+   
+    .nav-left a:hover,
+    .nav-right a:hover {
+      background-color: #a4dbf4;
+      color: #05314e;
+      
+    }
+
+    .nav-left,
+    .nav-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    main {
+      flex-grow: 1;
+      background-color: #fcf9d5;
+      background-image: url('new.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: scroll;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .main-text {
+      background-color: rgba(180, 222, 246, 0.85);
+      color: white;
+      padding: 20px;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 90%;
+    }
+
+    footer {
+      background-color: #084d74;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div style="background-color: rgba(12, 81, 131, 0.935);">
+      <a href="./h.html" style="text-decoration: none;">
+        <h1 style="color: #c1f8f8;">TravelEase</h1>
+      </a>
+    </div>
+    <nav class="navbar">
+      <div class="nav-left">
+        <a href="./h.html">Home</a>
+        <a href="search.html">Search</a>
+        <a href="tripreview.html">Trip Review</a>
+        <a href="highlighted.html">Highlighted Trips</a>
+        <a href="pre-req.html">Pre-requisites</a>
+        <a href="faq.html">FAQ</a>
+        <a href="offer.html">Offers</a>
+      </div>
+      <div class="nav-right">
+        <a href="http://localhost/htnl/login.html">Login</a>
+        <a href="./aboutus.html">About Us</a>
+        <a href="./contact.html">Contact</a>
+        <a href="http://localhost/htnl/profile.php">Profile</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="main-text">
+      “TravelEase is a user-friendly travel platform dedicated to making trip planning simple, stress-free, and accessible for everyone.”
+    </div>
+  </main>
+
+  <footer>
+    2025 TravelEase – All rights reserved
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="hcss.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+ 
+    <title>Book Trip - TravelEase</title>
+    <style>
+        .bd {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: poppins;
+            background-color: #f5f5f5;
+        }
+
+        .bd input, .bd button {
+            margin: 5px 0 15px 0;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .bd button {
+            cursor: pointer;
+            background-color: #05314e;
+            color: white;
+            border: none;
+        }
+
+        .bd button:hover {
+            background-color: #04508c;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="bd" style="text-align: center;">
+            <h2>Enter Your Details</h2>
+            <form action="submit.php" method="POST">
+                <label><strong>Full Name:</strong></label>
+                <input type="text" name="name" placeholder="Enter Name" required><br>
+
+                <label><strong>Email:&nbsp;&nbsp;&nbsp;</strong></label>
+                <input type="email" name="email" placeholder="Enter Email" required><br>
+
+                <label><strong>Mobile-No:</strong></label>
+                <input type="number" name="mobile" placeholder="Enter Number" required><br>
+
+                <label><strong>Age:</strong></label>
+                <input type="number" name="age" required style="width: 60px;"><br>
+
+                <label><strong>Date of birth:</strong></label>
+                <input type="date" name="dob" required><br>
+
+                <input type="hidden" name="trip" value="London Trip">
+
+                <button type="submit">Confirm details</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

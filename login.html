@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="hcss.css" />
+  <title>Login</title>
+</head>
+
+<body>
+
+<header>
+  <div>
+    <a href="./h.html" style="text-decoration: none;">
+      <h1>TravelEase</h1>
+    </a>
+  </div>
+</header>
+
+<main>
+  <div style="
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 40px;
+        background-color: #e9f6fd;
+        border-radius: 10px;
+      ">
+    <h2 style="text-align: center; color: #043d57; margin-bottom: 30px;">Login</h2>
+
+    <form action="login.php" method="post" onsubmit="return validateCaptcha()">
+      <label for="email">Email</label><br />
+      <input
+        name="email"
+        id="email"
+        type="email"
+        placeholder="Enter email"
+        required
+        pattern="^[^@]+@[^@]+\.[^@]+$"
+        title="Email must contain '@' and a valid domain."
+        style="width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc;"><br />
+
+      <label for="password">Password</label><br />
+      <input
+        name="password"
+        id="password"
+        type="password"
+        placeholder="Enter Password"
+        required
+        pattern="^(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$"
+        title="Password must contain at least one uppercase letter, one lowercase letter, one number, one special character (!@#$%^&*), and be at least 8 characters long."
+        style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ccc;"><br />
+
+      <!-- Remember me -->
+      <label style="display:block; margin-bottom:15px;">
+        <input type="checkbox" name="remember"> Remember Me
+      </label>
+
+      <!-- Custom Captcha -->
+      <div style="display:flex;align-items:center;gap:10px;margin:10px 0;">
+        <canvas id="captchaCanvas" width="120" height="40" style="border:1px solid #ccc;border-radius:5px;"></canvas>
+        <button type="button" onclick="generateCaptcha()">🔁</button>
+      </div>
+      <input type="text" id="captchaInput" name="captchaInput" placeholder="Enter captcha" required style="width: 100%; padding: 8px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+      <input type="hidden" name="captcha_hidden" id="captchaHidden">
+
+      <button
+        type="submit"
+        style="width: 100%; padding: 12px; background-color: #085192; color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">
+        Login
+      </button>
+    </form>
+
+    <a href="./signin.html" style="text-decoration: none;">
+      <button
+        style="width: 100%; padding: 12px; background-color: #048488; color: white; font-weight: bold; margin-top: 15px; border: none; border-radius: 5px; cursor: pointer;">
+        Sign up
+      </button>
+    </a>
+  </div>
+</main>
+
+<footer style="text-align: center; margin-top: 100px;">
+    <p>2025 TravelEase all rights reserved</p>
+</footer>
+
+<script>
+let captchaCode = "";
+
+// Generate random captcha
+function generateCaptcha() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789";
+  captchaCode = "";
+  for (let i = 0; i < 6; i++) {
+    captchaCode += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+
+  const canvas = document.getElementById("captchaCanvas");
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.font = "22px Arial";
+  ctx.fillStyle = "#043d57";
+  ctx.fillText(captchaCode, 10, 25);
+
+  document.getElementById("captchaHidden").value = captchaCode;
+}
+
+// Validate captcha before form submit
+function validateCaptcha() {
+  const userCaptcha = document.getElementById("captchaInput").value.trim();
+  const original = document.getElementById("captchaHidden").value.trim();
+
+  if (userCaptcha !== original) {
+    alert("❌ Invalid Captcha! Please try again.");
+    generateCaptcha();
+    document.getElementById("captchaInput").value = "";
+    return false;
+  }
+  return true;
+}
+
+// Initialize captcha on page load
+window.onload = generateCaptcha;
+</script>
+
+</body>
+</html>
