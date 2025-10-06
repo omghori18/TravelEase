@@ -14,6 +14,12 @@ if (!isset($_SESSION['admin_id'])) {
 // Fetch all events
 $result = $conn->query("SELECT * FROM trips ORDER BY trip_date DESC");
 
+// Make sure reg_time exists before fetching users
+$user_check = $conn->query("SHOW COLUMNS FROM users LIKE 'reg_time'");
+if ($user_check->num_rows == 0) {
+    $conn->query("ALTER TABLE users ADD COLUMN reg_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP");
+}
+
 // Fetch all users
 $user_result = $conn->query("SELECT id, fullname, email, mobile, reg_time FROM users ORDER BY reg_time DESC");
 if(!$user_result) {
@@ -51,7 +57,7 @@ footer { background-color:#084d74; color:white; text-align:center; padding:15px 
 <h1>TravelEase Admin Dashboard</h1>
 <nav>
     <a href="admin_dashboard.php">Events</a>
-    <a href="highlighted_manage.php">Highlighted Trips</a>
+    <a href="highlighted_trips.php">Highlighted Trips</a>
     <a href="logout.php">Logout</a>
 </nav>
 </header>

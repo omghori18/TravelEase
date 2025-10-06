@@ -35,6 +35,42 @@
       text-align: center;
       color: #033554;
     }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 30px;
+    }
+
+    input, textarea, button {
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #033554;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #06527d;
+    }
+
+    .review-item {
+      margin-bottom: 20px;
+    }
+
+    .review-item hr {
+      border: 0;
+      border-top: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
@@ -46,35 +82,65 @@
 
   <main>
     <h2>Recent Reviews</h2>
+
+    <!-- Review form -->
+    <form id="reviewForm">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <textarea id="review" placeholder="Write your review..." rows="3" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+
     <div id="reviewList"></div>
   </main>
 
   <script>
     const reviewList = document.getElementById("reviewList");
+    const reviewForm = document.getElementById("reviewForm");
 
-    function displayReviews(reviews) {
+    // Load initial reviews from JSON
+    let reviews = [];
+    async function loadReviews() {
+      try {
+        const res = await fetch("reviews.json");
+        const data = await res.json();
+        if (data.reviews) {
+          reviews = data.reviews;
+          displayReviews();
+        }
+      } catch (error) {
+        console.error("Error loading reviews.json", error);
+      }
+    }
+
+    function displayReviews() {
       reviewList.innerHTML = "";
-      reviews.forEach((r) => {
+      reviews.forEach(r => {
         reviewList.innerHTML += `
-          <div style="margin-bottom: 20px;">
-            <p><strong>${r.name}</strong> – “${r.review}”</p>
+          <div class="review-item">
+            <p><strong>${r.name}</strong> – "${r.review}"</p>
             <hr>
           </div>
         `;
       });
     }
 
-    async function loadReviews() {
-      try {
-        const res = await fetch("reviews.json");
-        const data = await res.json();
-        if (data.reviews) {
-          displayReviews(data.reviews);
-        }
-      } catch (error) {
-        console.error("Error loading reviews.json", error);
+    // Add new review
+    reviewForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const reviewText = document.getElementById("review").value.trim();
+
+      if(name && reviewText) {
+        // Add to reviews array
+        reviews.unshift({ name, review: reviewText });
+
+        // Display updated list
+        displayReviews();
+
+        // Clear form
+        reviewForm.reset();
       }
-    }
+    });
 
     loadReviews();
   </script>
